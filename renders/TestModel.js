@@ -10,7 +10,7 @@ function Model({ setLoaded }) {
   const modelRef = useRef();
 
   useEffect(() => {
-    setLoaded(true); // 🔹 Marca el modelo como cargado cuando se renderiza
+    setLoaded(true);
   }, [setLoaded]);
 
   useFrame(() => {
@@ -19,7 +19,7 @@ function Model({ setLoaded }) {
     }
   });
 
-  return <primitive ref={modelRef} object={scene} scale={1.2} position={[0, -1, 0]} />;
+  return <primitive ref={modelRef} object={scene} scale={1.5} position={[0, -1, 0]} />;
 }
 
 export default function TestModel() {
@@ -51,11 +51,9 @@ export default function TestModel() {
       <Canvas camera={{ position: [0, 1, 5] }} shadows style={{ width: "100%", height: "100%" }}>
         <ambientLight intensity={0.7} />
         <directionalLight position={[2, 2, 5]} intensity={1} castShadow />
-
         <Suspense fallback={null}>
           <Model setLoaded={setLoaded} />
         </Suspense>
-
         <OrbitControls enableZoom={false} />
       </Canvas>
     </div>
